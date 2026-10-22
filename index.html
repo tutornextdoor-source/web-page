@@ -13,7 +13,15 @@
 body{margin:0;font-family:'Lexend',system-ui,sans-serif;background:#F7F8FA}
 a{color:inherit}a:hover{opacity:0.88}
 html{scroll-behavior:smooth}
-@media (max-width: 760px){nav[aria-label="Main"] a:not(:last-child){display:none !important}}
+.tnd-mnav{display:none}
+.tnd-mnav summary{list-style:none;cursor:pointer}
+.tnd-mnav summary::-webkit-details-marker{display:none}
+.tnd-mnav .tnd-x{display:none}
+.tnd-mnav[open] .tnd-x{display:block}
+.tnd-mnav[open] .tnd-burger{display:none}
+.tnd-mnav-panel a{display:block;padding:14px clamp(16px,4vw,48px);color:#FFFFFF;text-decoration:none;font-size:19px;font-weight:600;border-top:1px solid rgba(255,255,255,.12)}
+.tnd-mnav-panel a:active{background:rgba(255,255,255,.08)}
+@media (max-width: 760px){nav[aria-label="Main"] > a:not([href="#contact"]){display:none !important}.tnd-mnav{display:block}header > div{flex-wrap:nowrap !important;padding-top:10px !important;padding-bottom:10px !important}header a[href="#top"]{font-size:22px !important;white-space:nowrap}nav[aria-label="Main"]{gap:8px !important;flex-wrap:nowrap !important}nav[aria-label="Main"] > a[href="#contact"]{padding:10px 16px !important;font-size:15px;white-space:nowrap}}
 .tnd-underline{stroke-dasharray:1;stroke-dashoffset:1;animation:tnd-draw .9s cubic-bezier(.65,0,.35,1) .35s forwards}
 @keyframes tnd-draw{to{stroke-dashoffset:0}}
 .tnd-glow{transform-box:fill-box;transform-origin:center;animation:tnd-glow 3.2s ease-in-out infinite}
@@ -40,6 +48,20 @@ a[style*="999px"]:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(27
 <a href="#story" style="text-decoration: none; padding: 10px 0">Our Story</a>
 <a href="#faq" style="text-decoration: none; padding: 10px 0">FAQ</a>
 <a href="#contact" style="text-decoration: none; padding: 12px 20px; border-radius: 999px; background: #F5C33B; color: #1B2A4A; font-weight: 700">Text Us</a>
+<details class="tnd-mnav">
+<summary aria-label="Menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.35); color: #FFFFFF">
+<svg class="tnd-burger" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg>
+<svg class="tnd-x" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg>
+</summary>
+<div class="tnd-mnav-panel" style="position: absolute; left: 0; right: 0; top: 100%; background: #1B2A4A; box-shadow: 0 12px 24px rgba(0,0,0,0.25); padding-bottom: 8px">
+<a href="#parents">For Parents</a>
+<a href="#teens">For High Schoolers</a>
+<a href="#why">Why It Matters</a>
+<a href="#story">Our Story</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+</div>
+</details>
 </nav>
 </div>
 </header>
@@ -222,5 +244,6 @@ a[style*="999px"]:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(27
 </footer>
 
 </div>
+<script>document.querySelectorAll(".tnd-mnav-panel a").forEach(function(a){a.addEventListener("click",function(){a.closest("details").open=false})});</script>
 </body>
 </html>
